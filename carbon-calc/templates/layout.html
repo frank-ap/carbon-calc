@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Carbon Calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+    />
+
+    <style>
+      .alert {
+        background: green;
+        padding: 1rem;
+        border-radius: 5px;
+        color: white;
+        margin: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Carbon Calculator</h3>
+
+    <!-- Form -->
+    <div class="container">
+      <form method="POST" action="">
+          {{ form.hidden_tag() }}
+      <label for="Number One">What Premier League team do you support?</label>
+        <select name=teams class="u-full-width">
+          {% for team in teams %}
+              <option value="{{team}}" SELECTED>{{team}}</option>
+          {% endfor %}     
+        </select>
+      <label for="Number Two">What is the first part of your postcode?</label>
+        <select name=postcodes class="u-full-width">
+          {% for postcode in postcodes %}
+              <option value="{{postcode}}" SELECTED>{{postcode}}</option>
+          {% endfor %}     
+        </select>
+      <label for="Number Three">How do you travel to your home matches?</label>
+        <select name=vehicle class="u-full-width">
+          {% for mode in vehicle %}
+              <option value="{{mode}}" SELECTED>{{mode}}</option>
+          {% endfor %}     
+        </select>
+        <label for="Number Four">How many matches a season do you attend?</label>
+        <input
+          type="text"
+          class="u-full-width"
+          name="games"
+        />
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+      </form>
+      <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <div class="alert alert-{{ category }}">
+                    {{ message }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+          </div>
+      </main>
+    </div>
+  </body>
+</html>
