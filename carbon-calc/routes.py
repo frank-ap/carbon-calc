@@ -37,8 +37,8 @@ def form_data_calc(team, pc, vehicle, games):
                 response_json = response.json()
                 km = response_json['rows'][0]['elements'][0]['distance']['value']
                 ef = car_ef['fuel']['petrol']['p_ef'][3]
-                km_games = int(km) * int(games)
-                print(vehicle)
+                km_games = (int(km) * int(games) / 1000)
+
                 if vehicle in ["Walk", "Cycle"]:
                     km_games = 0
                     total = km_games * ef
@@ -59,9 +59,6 @@ def dropdown():
     teams = sorted(teams_lst)
     postcode_list = sorted(pc_lst)
     vehicle = sorted(travel_mode)
-    #print(form.teams.data)
-    #print(form.postcodes.data)
-    #print(form.vehicle.data)
 
     form_data_calc(form.teams.data, form.postcodes.data, form.vehicle.data, form.games.data)
 
