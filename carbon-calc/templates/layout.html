@@ -56,21 +56,21 @@
             {{ form.submit(class="btn btn-outline-info") }}
         </div>
       </form>
-      <main role="main" class="container">
-        <div class="row">
-          <div class="col-md-8">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-              {% if messages %}
-                {% for category, message in messages %}
-                  <div class="alert alert-{{ category }}">
-                    {{ message }}
-                  </div>
-                {% endfor %}
-              {% endif %}
-            {% endwith %}
-            {% block content %}{% endblock %}
-          </div>
-      </main>
+        <main role="main" class="container">
+          <div class="row">
+            <div class="col-md-8" class="u-full-width">
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                      {{ message }}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+              {% block content %}{% endblock %}
+            </div>
+        </main>
     </div>
   </body>
 </html>
