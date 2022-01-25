@@ -42,10 +42,10 @@ def form_data_calc(team, pc, vehicle, games):
                 if vehicle in ["Walk", "Cycle"]:
                     km_games = 0
                     total = ((km_games * ef) * 2) # Return journey
-                    flash(f"The CO2 emitted per season is {total} kgCO2. Wooohooo!")
+                    flash(f"You emit {total} kgCO2 per season. Wooohooo!")
                 else:
                     total = ((km_games * ef) * 2) # Return journey
-                    flash(f"The CO2 emitted per season is {round(total,2)} kgCO2")
+                    flash(f"You emit {round(total,2)} kgCO2 per season")
     else:
         print("No data")
 
